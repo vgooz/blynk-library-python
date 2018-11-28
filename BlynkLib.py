@@ -222,6 +222,14 @@ class Blynk:
 
     def _close(self, emsg=None):
         self.conn.close()
+        self._start_time = time.ticks_ms()
+        self._task_millis = self._start_time
+        self._hw_pins = {}
+        self._rx_data = b''
+        self._msg_id = 1
+        self._timeout = None
+        self._tx_count = 0
+        self._m_time = 0
         self.state = DISCONNECTED
         time.sleep(RECONNECT_DELAY)
         if emsg:
