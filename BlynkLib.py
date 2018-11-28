@@ -93,6 +93,7 @@ LOGO = const("""
 def sleep_from_until (start, delay):
     while time.ticks_diff(start, time.ticks_ms()) < delay:
         idle_func()
+    time.sleep(0.01)
     return start + delay
 
 class VrPin:
